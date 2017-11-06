@@ -9,7 +9,7 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./components/Home";
-import Register from "./components/Register";
+import Register from "./components/login/Register";
 import Dashboard from "./components/Dashboard";
 import { GameLobby } from "./components/GameLobby";
 import GameRoom from "./components/GameRoom";
@@ -99,7 +99,7 @@ class App extends Component {
   requireLogin = () => {
     !this.state.auth
       ? this.setState({
-          redirect: "/login"
+          redirect: "/"
         })
       : this.setState({
           redirect: "/user"
@@ -336,29 +336,6 @@ class App extends Component {
 
   // creates a new user account, gets the new user's initial 10 random cards,
   // redirects them to their dashboard
-  handleRegisterSubmit = (e, username, password, email, displayName) => {
-    e.preventDefault();
-    axios
-      .post("/auth/register", {
-        username,
-        password,
-        email,
-        displayName
-      })
-      .then(res => {
-        this.setState({
-          auth: res.data.auth,
-          user: res.data.user
-        });
-      })
-      .then(
-        this.getInitialUserCards,
-        this.setState({
-          redirect: "/user"
-        })
-      )
-      .catch(err => console.log(err));
-  };
 
   // logs user out
   logOut = async () => {
@@ -498,13 +475,7 @@ class App extends Component {
                   <Home handleLoginSubmit={this.handleLoginSubmit} />
                 )}
               />
-              <Route
-                exact
-                path="/register"
-                render={() => (
-                  <Register handleRegisterSubmit={this.handleRegisterSubmit} />
-                )}
-              />
+              <Route exact path="/register" component={Register} />
               <Route
                 exact
                 path="/user"
@@ -514,6 +485,7 @@ class App extends Component {
                     currentContent={this.state.currentContent}
                     cards={this.state.cardData}
                     userCards={this.state.userCardData}
+                    getInitialUserCards={this.getInitialUserCards}
                     newCard={this.state.newCardData}
                     userSubmitEdit={this.userSubmitEdit}
                     userSelectedCardToEdit={this.userSelectedCardToEdit}
