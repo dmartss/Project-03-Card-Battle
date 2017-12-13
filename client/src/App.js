@@ -132,18 +132,17 @@ class App extends Component {
   };
 
   // when user first logs in, gives them their initial 10 random cards
-    getInitialUserCards = async () => {
+  getInitialUserCards = async () => {
     try {
       const res = await axios.get("/user/new");
       this.setState({
         userCardData: res.data
       });
-<<<<<<< HEAD
     } catch (err) {
       console.log(err);
     }
     try {
-      const data = await this.state.userCardData.forEach(data =>
+      await this.state.userCardData.forEach(data =>
         axios.post("/usercard/new", {
           cardId: data.id,
           name: data.name,
@@ -153,22 +152,6 @@ class App extends Component {
           imageUrl: data.image_url
         })
       );
-=======
-      try {
-        await this.state.userCardData.forEach(data => {
-          axios.post("/usercard/new", {
-            cardId: data.id,
-            name: data.name,
-            class: data.class,
-            attack: data.attack,
-            defense: data.defense,
-            imageUrl: data.image_url
-          });
-        });
-      } catch (err) {
-        console.log(err);
-      }
->>>>>>> 809f9d7577eeb14b0472552d7380e241f1312272
     } catch (err) {
       console.log(err);
     }
@@ -338,24 +321,24 @@ class App extends Component {
 
   // creates a new user account, gets the new user's initial 10 random cards,
   // redirects them to their dashboard
-  handleRegisterSubmit = async (e, username, password, email, displayName) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("/auth/register", {
-        username,
-        password,
-        email,
-        displayName
-      });
-      this.setState({
-        auth: res.data.auth,
-        user: res.data.user
-      });
-      this.getInitialUserCards && this.props.history.push("/user");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // handleRegisterSubmit = async (e, username, password, email, displayName) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await axios.post("/auth/register", {
+  //       username,
+  //       password,
+  //       email,
+  //       displayName
+  //     });
+  //     this.setState({
+  //       auth: res.data.auth,
+  //       user: res.data.user
+  //     });
+  //     this.getInitialUserCards && this.props.history.push("/user");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   // logs user out
   logOut = async () => {
@@ -522,9 +505,7 @@ class App extends Component {
         <Route
           exact
           path="/register"
-          render={() => (
-            <Register handleRegisterSubmit={this.handleRegisterSubmit} />
-          )}
+          render={() => <Register getCards={this.getInitialUserCards} />}
         />
       </Switch>
     );
