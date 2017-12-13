@@ -30,25 +30,29 @@ export const BattleField = ({
         <b>{oppoNameData && `${oppoNameData} HP: ${oppoHp}`}</b>
       </div>
       <div className="battlefield-buttons">
-        {userSelection && oppoSelection && confirmed && !gameOver ? (
-          <button
-            onClick={() => readyToContinue()}
-            style={{
-              visibility:
-                userSelection && oppoSelection && confirmed
-                  ? "visible"
-                  : "hidden"
-            }}
-          >
-            Continue!
-          </button>
-        ) : null}
-        {gameOver && joined ? (
-          <div className="game-over-buttons">
-            <button onClick={rematch}>Rematch?</button>
-            <button onClick={leaveGame}>Bow Out</button>
-          </div>
-        ) : null}
+        {userSelection &&
+          oppoSelection &&
+          confirmed &&
+          !gameOver && (
+            <button
+              onClick={() => readyToContinue()}
+              style={{
+                visibility:
+                  userSelection && oppoSelection && confirmed
+                    ? "visible"
+                    : "hidden"
+              }}
+            >
+              Continue!
+            </button>
+          )}
+        {gameOver &&
+          joined && (
+            <div className="game-over-buttons">
+              <button onClick={rematch}>Rematch?</button>
+              <button onClick={leaveGame}>Bow Out</button>
+            </div>
+          )}
       </div>
     </div>
     <div className="card-selected">
@@ -61,11 +65,10 @@ export const BattleField = ({
                 <p>{userSelection.class}</p>
               </div>
             </div>
-            {joined ? (
-              confirmed ? null : (
+            {joined &&
+              (!confirmed && (
                 <button onClick={confirmSelection}>Confirm</button>
-              )
-            ) : null}
+              ))}
             <div className="card-numbers">
               <p>
                 ATT: <span>{userSelection.attack}</span>
