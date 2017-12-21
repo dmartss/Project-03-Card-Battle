@@ -8,17 +8,17 @@ import UserProfile from "./UserProfile";
 
 // the container for all of the pages in the user dashboard
 // changes based on the currentContent state in App.js
-export const DashboardContents = props => (
+export const DashboardContents = ({ currentContent, ...props }) => (
   <div className="dashboard-contents">
-    {props.currentContent === "user-cards" ? (
+    {currentContent === "user-cards" ? (
       <UserCards {...props} />
-    ) : props.currentContent === "card-collection" ? (
+    ) : currentContent === "card-collection" ? (
       <CardCollection {...props} />
-    ) : props.currentContent === "get-new-card" ? (
+    ) : currentContent === "get-new-card" ? (
       <NewCard {...props} />
-    ) : props.currentContent === "user-profile" ? (
+    ) : currentContent === "user-profile" ? (
       <UserProfile {...props} />
-    ) : props.currentContent === "leaderboard" ? (
+    ) : currentContent === "leaderboard" ? (
       <Leaderboard {...props} />
     ) : null}
   </div>
