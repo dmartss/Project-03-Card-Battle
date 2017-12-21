@@ -18,7 +18,7 @@ usercardsController.addToUser = async (req, res) => {
       {
         cardId: req.body.cardId,
         name: req.body.name,
-        class: req.body.class,
+        type: req.body.type,
         attack: req.body.attack,
         defense: req.body.defense,
         imageUrl: req.body.imageUrl

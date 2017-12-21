@@ -16,14 +16,14 @@ Usercard.addToUser = (card, userid) =>
   db.one(
     `
   INSERT INTO users_cards
-  (card_id, name, class, attack, defense, image_url, user_id)
+  (card_id, name, type, attack, defense, image_url, user_id)
   VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING *
   `,
     [
       card.cardId,
       card.name,
-      card.class,
+      card.type,
       card.attack,
       card.defense,
       card.imageUrl,
