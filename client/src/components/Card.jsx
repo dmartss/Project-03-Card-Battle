@@ -15,8 +15,7 @@ class Card extends Component {
   render() {
     const {
       deleteUserCard,
-      card,
-      card: { id, attack, defense },
+      card: { type, id, attack, defense },
       userSelectedCardToEdit,
       userSubmitEdit,
       currentCardId
@@ -42,7 +41,7 @@ class Card extends Component {
           />
         </div>
         {/* card class determines background image in CSS */}
-        <div className={`card ${card.class}`}>
+        <div className={`card ${type}`}>
           <div className="card-top">
             <div className="card-name">
               {currentCardId === id ? (
@@ -58,7 +57,7 @@ class Card extends Component {
               ) : (
                 <b>{name}</b>
               )}
-              <p>{card.class}</p>
+              <p>{type}</p>
             </div>
           </div>
           <div className="card-numbers">
