@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render } from "react-dom";
 import "./index.css";
 import { configureStore } from "./configureStore";
-import { Root } from "./Root";
+import Root from "./Root";
 
 const store = configureStore();
 
-ReactDOM.hydrate(<Root store={store} />, document.querySelector("#root"));
+render(<Root store={store} />, document.querySelector("#root"));
