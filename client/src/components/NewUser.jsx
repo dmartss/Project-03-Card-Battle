@@ -43,20 +43,20 @@ class NewUser extends Component {
     return (
       <div className="card-list">
         {cardData &&
-          cardData.map(data => {
+          cardData.map(({ name, type, attack, defense }) => {
             return (
               <div key={data.id} className="single-card">
                 <div className="card-name">
-                  <b>{data.name}</b>
+                  <b>{name}</b>
                 </div>
                 <div className="card-class">
-                  <p>class: {data.class}</p>
+                  <p>class: {type}</p>
                 </div>
                 <div className="card-attack">
-                  <p>attack: {data.attack}</p>
+                  <p>attack: {attack}</p>
                 </div>
                 <div className="card-defense">
-                  <p>defense: {data.defense}</p>
+                  <p>defense: {defense}</p>
                 </div>
               </div>
             );
