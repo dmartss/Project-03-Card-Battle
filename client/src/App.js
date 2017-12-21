@@ -57,12 +57,11 @@ class App extends Component {
     this.requireLogin();
     // gets all of the cards in the api to display in Card Collection
     try {
-      await axios.get("/cards").then(res => {
-        console.log(res.data);
-        this.setState({
-          cardData: res.data,
-          cardDataLoaded: true
-        });
+      const res = await axios.get("/cards");
+      console.log(res.data);
+      this.setState({
+        cardData: res.data,
+        cardDataLoaded: true
       });
     } catch (err) {
       console.log(err);
@@ -142,15 +141,16 @@ class App extends Component {
       console.log(err);
     }
     try {
-      await this.state.userCardData.forEach(data =>
-        axios.post("/usercard/new", {
-          cardId: data.id,
-          name: data.name,
-          class: data.class,
-          attack: data.attack,
-          defense: data.defense,
-          imageUrl: data.image_url
-        })
+      await this.state.userCardData.forEach(
+        ({ id, name, type, attack, defense, image_url }) =>
+          axios.post("/usercard/new", {
+            cardId: id,
+            name: name,
+            type: type,
+            attack: attack,
+            defense: defense,
+            imageUrl: image_url
+          })
       );
     } catch (err) {
       console.log(err);
@@ -168,7 +168,7 @@ class App extends Component {
         await axios.post("/usercard/new", {
           cardId: newCardData[0].id,
           name: newCardData[0].name,
-          class: newCardData[0].class,
+          type: newCardData[0].type,
           attack: newCardData[0].attack,
           defense: newCardData[0].defense,
           imageUrl: newCardData[0].image_url
@@ -179,23 +179,26 @@ class App extends Component {
       }
       let updatedCurrency = this.state.user.currency;
       updatedCurrency -= 20;
-      const { user } = this.state;
+      const {
+        user: { display_name, email, id, password_digest, username, wins }
+      } = this.state;
       try {
         this.setState({
           user: {
             currency: updatedCurrency,
-            display_name: user.display_name,
-            email: user.email,
-            id: user.id,
-            password_digest: user.password_digest,
-            username: user.username,
-            wins: user.wins
+            display_name: display_name,
+            email: email,
+            id: id,
+            password_digest: password_digest,
+            username: username,
+            wins: wins
           }
         });
+        const { user: { username, wins, currency } } = this.state;
         const res = await axios.put(`/user/win`, {
-          username: this.state.user.username,
-          wins: this.state.user.wins,
-          currency: this.state.user.currency
+          username: username,
+          wins: wins,
+          currency: currency
         });
         console.log(res);
       } catch (error) {
@@ -218,7 +221,7 @@ class App extends Component {
           await axios.post("/usercard/new", {
             cardId: newCardData[0].id,
             name: newCardData[0].name,
-            class: newCardData[0].class,
+            type: newCardData[0].type,
             attack: newCardData[0].attack,
             defense: newCardData[0].defense,
             imageUrl: newCardData[0].image_url
@@ -229,23 +232,24 @@ class App extends Component {
         }
         let updatedCurrency = this.state.user.currency;
         updatedCurrency -= num * 2;
-        const { user } = this.state;
+        const { user: { display_name, email, id, currency } } = this.state;
+        const { user: { password_digest, username, wins } } = this.state;
         this.setState({
           user: {
             currency: updatedCurrency,
-            display_name: user.display_name,
-            email: user.email,
-            id: user.id,
-            password_digest: user.password_digest,
-            username: user.username,
-            wins: user.wins
+            display_name: display_name,
+            email: email,
+            id: id,
+            password_digest: password_digest,
+            username: username,
+            wins: wins
           }
         });
         try {
           const res = await axios.put(`/user/win`, {
-            username: user.username,
-            wins: user.wins,
-            currency: user.currency
+            username: username,
+            wins: wins,
+            currency: currency
           });
           console.log(res);
         } catch (err) {
@@ -415,19 +419,20 @@ class App extends Component {
 
   // updates users wins and currency when they win a game
   updateWinsNCurrency = async () => {
-    const { user } = this.state;
-    let updatedCurrency = user.currency;
+    const { user: { display_name, currency, wins } } = this.state;
+    const { user: { email, id, password_digest, username } } = this.state;
+    let updatedCurrency = currency;
     updatedCurrency += 10;
-    let updatedWins = user.wins;
+    let updatedWins = wins;
     updatedWins += 1;
     this.setState({
       user: {
         currency: updatedCurrency,
-        display_name: user.display_name,
-        email: user.email,
-        id: user.id,
-        password_digest: user.password_digest,
-        username: user.username,
+        display_name: display_name,
+        email: email,
+        id: id,
+        password_digest: password_digest,
+        username: username,
         wins: updatedWins
       }
     });
