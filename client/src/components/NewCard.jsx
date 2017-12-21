@@ -37,17 +37,15 @@ const NewCard = ({
   ];
   return (
     <div className="new-card">
-      {buttons.map(button => (
+      {buttons.map(({ cost, onClick, text }) => (
         <button
-          key={button.cost}
+          key={cost}
           className="newCardButton"
-          type="button"
-          onClick={
-            userCards.length < 20 ? button.onClick : () => alert(`${message}`)
-          }
+          type=""
+          onClick={userCards.length < 20 ? onClick : () => alert(`${message}`)}
         >
-          {button.text}
-          <strong style={{ color: "red" }}>{button.cost}</strong>
+          {text}
+          <strong style={{ color: "red" }}>{cost}</strong>
         </button>
       ))}
       {newCard && <Card card={newCard[0]} />}
