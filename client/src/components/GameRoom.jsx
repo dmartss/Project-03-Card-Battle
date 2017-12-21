@@ -509,11 +509,11 @@ class GameRoom extends Component {
           <div className="oppo-hand">
             <h3>{userNameData ? `${userNameData}` : "Waiting Player"}</h3>
             {userCardData &&
-              userCardData.map(card => (
+              userCardData.map(({ image_url }) => (
                 <div
                   className="card"
                   style={{
-                    background: `url(${card.image_url}`,
+                    background: `url(${image_url}`,
                     backgroundSize: "cover"
                   }}
                 />
@@ -556,12 +556,9 @@ class GameRoom extends Component {
             <div className="message-display-wrapper">
               <div className="message-display">
                 {messages &&
-                  messages.map(message => (
-                    <p
-                      className={!message.displayName ? "notification" : ""}
-                      key={messages.indexOf(message)}
-                    >
-                      <span>{message.displayName}</span>: {message.message}
+                  messages.map(({ displayName, message }, i) => (
+                    <p className={!displayName && "notification"} key={i}>
+                      <span>{displayName}</span>: {message}
                     </p>
                   ))}
               </div>
@@ -578,11 +575,11 @@ class GameRoom extends Component {
         <div className="oppo-hand">
           <h3>{oppoNameData ? `${oppoNameData}` : "Waiting Player"}</h3>
           {oppoCardData &&
-            oppoCardData.map(card => (
+            oppoCardData.map(({ image_url }) => (
               <div
                 className="card"
                 style={{
-                  background: `url(${card.image_url}`,
+                  background: `url(${image_url}`,
                   backgroundSize: "cover"
                 }}
               />
