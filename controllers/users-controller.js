@@ -7,17 +7,18 @@ usersController.create = async (req, res) => {
   try {
     const salt = await bcrypt.genSaltSync();
     const hash = await bcrypt.hashSync(req.body.password, salt);
+    const { username, displayName, email } = req.body;
     const user = await User.create({
-      username: req.body.username,
+      username,
       password_digest: hash,
-      displayName: req.body.displayName,
-      email: req.body.email
+      displayName,
+      email
     });
     req.login(user, err => {
       if (err) return next(err);
       res.json({
         message: "ok",
-        user: user,
+        user,
         auth: true
       });
     });
@@ -54,7 +55,7 @@ usersController.delete = async (req, res) => {
     const user = await User.destroy(req.params.id);
     return res.json({
       message: "ok",
-      user: user
+      user
     });
   } catch (err) {
     console.log(err);
@@ -62,18 +63,17 @@ usersController.delete = async (req, res) => {
   }
 };
 //show leaderboard page
-usersController.showLeaderboard = (req, res) => {
-  User.showLeaderboard()
-    .then(users => {
-      res.json({
-        message: "ok",
-        data: users
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+usersController.showLeaderboard = async (req, res) => {
+  try {
+    const users = await User.showLeaderboard();
+    res.json({
+      message: "ok",
+      data: users
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 };
 //update currency and wins after player wins the battle
 usersController.updateCurrencyNWins = async (req, res) => {

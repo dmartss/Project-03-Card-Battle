@@ -14,14 +14,15 @@ usercardsController.findUserCards = async (req, res) => {
 //add card to users_cards
 usercardsController.addToUser = async (req, res) => {
   try {
+    const { cardId, name, type, attack, defense, imageUrl } = req.body;
     const usercard = await Usercard.addToUser(
       {
-        cardId: req.body.cardId,
-        name: req.body.name,
-        type: req.body.type,
-        attack: req.body.attack,
-        defense: req.body.defense,
-        imageUrl: req.body.imageUrl
+        cardId,
+        name,
+        type,
+        attack,
+        defense,
+        imageUrl
       },
       req.user.id
     );
@@ -61,8 +62,8 @@ usercardsController.findFiveUserCards = async (req, res) => {
     const UserCard = await Usercard.findFiveUserCards(req.user.id);
     await Usercard.findFiveUserCards(1);
     return {
-      userCard: userCard,
-      opponentCard: opponentCard
+      userCard,
+      opponentCard
     };
     return res.json(data);
   } catch (err) {
