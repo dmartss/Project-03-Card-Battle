@@ -103,9 +103,10 @@ class App extends Component {
     e.preventDefault();
     try {
       const res = await axios.post("/auth/login", { username, password });
+      const { auth, user } = res.data;
       this.setState({
-        auth: res.data.auth,
-        user: res.data.user
+        auth,
+        user
       });
       this.state.auth
         ? this.props.history.push("/user")
@@ -145,10 +146,10 @@ class App extends Component {
         ({ id, name, type, attack, defense, image_url }) =>
           axios.post("/usercard/new", {
             cardId: id,
-            name: name,
-            type: type,
-            attack: attack,
-            defense: defense,
+            name,
+            type,
+            attack,
+            defense,
             imageUrl: image_url
           })
       );
@@ -186,19 +187,19 @@ class App extends Component {
         this.setState({
           user: {
             currency: updatedCurrency,
-            display_name: display_name,
-            email: email,
-            id: id,
-            password_digest: password_digest,
-            username: username,
-            wins: wins
+            display_name,
+            email,
+            id,
+            password_digest,
+            username,
+            wins
           }
         });
         const { user: { username, wins, currency } } = this.state;
         const res = await axios.put(`/user/win`, {
-          username: username,
-          wins: wins,
-          currency: currency
+          username,
+          wins,
+          currency
         });
         console.log(res);
       } catch (error) {
@@ -237,19 +238,19 @@ class App extends Component {
         this.setState({
           user: {
             currency: updatedCurrency,
-            display_name: display_name,
-            email: email,
-            id: id,
-            password_digest: password_digest,
-            username: username,
-            wins: wins
+            display_name,
+            email,
+            id,
+            password_digest,
+            username,
+            wins
           }
         });
         try {
           const res = await axios.put(`/user/win`, {
-            username: username,
-            wins: wins,
-            currency: currency
+            username,
+            wins,
+            currency
           });
           console.log(res);
         } catch (err) {
@@ -400,8 +401,8 @@ class App extends Component {
     let email = e.target.email.value;
     try {
       await axios.put(`/user/${this.state.currentUserId}`, {
-        displayName: e.target.display_name.value,
-        email: e.target.email.value
+        display_name,
+        email
       });
       let newUserData = this.state.user;
       newUserData.display_name = display_name;
@@ -428,20 +429,20 @@ class App extends Component {
     this.setState({
       user: {
         currency: updatedCurrency,
-        display_name: display_name,
-        email: email,
-        id: id,
-        password_digest: password_digest,
-        username: username,
+        display_name,
+        email,
+        id,
+        password_digest,
+        username,
         wins: updatedWins
       }
     });
     try {
-      const { user } = this.state;
+      const { user: { username, wins, currency } } = this.state;
       const res = await axios.put(`/user/win`, {
-        username: user.username,
-        wins: user.wins,
-        currency: user.currency
+        username,
+        wins,
+        currency
       });
       console.log(res);
     } catch (err) {
