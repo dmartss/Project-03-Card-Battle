@@ -8,6 +8,20 @@ class Dashboard extends Component {
   state = { leaderInfo: null };
 
   // state stored for leaderboard component
+
+  async componentWillMount() {
+    this.props.getInitial();
+    try {
+      const res = await axios.get("/usercard");
+      console.log(res);
+      this.setState({
+        userCardData: res.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async componentDidMount() {
     try {
       const res = await axios.get("/user/leaderboard");
