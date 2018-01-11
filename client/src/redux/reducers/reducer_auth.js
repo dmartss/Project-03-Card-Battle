@@ -4,8 +4,7 @@ const initialState = {
   auth: false,
   user: false
 };
-export default function(state = initialState, action) {
-  const { type, payload } = action;
+export default function(state = initialState, { type, payload }) {
   switch (type) {
     case REGISTER_SUBMIT:
       return {
