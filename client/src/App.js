@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import axios from "axios";
-import * as firebase from "firebase";
+import React, { Component } from 'react';
+import axios from 'axios';
+import * as firebase from 'firebase';
 
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter } from 'react-router-dom';
 
-import "./App.css";
+import './App.css';
 
-import { Header } from "./components/Header";
-import Footer from "./components/Footer";
-import { Home } from "./components/Home";
-import Register from "./components/Register";
-import { GameLobby } from "./components/GameLobby";
-import GameRoom from "./components/GameRoom";
-import asyncComponent from "./asyncComponent";
+import { Header } from './components/Header';
+import Footer from './components/Footer';
+import { Home } from './components/Home';
+import Register from './components/Register';
+import { GameLobby } from './components/GameLobby';
+import GameRoom from './components/GameRoom';
+import asyncComponent from './asyncComponent';
 
-const AsyncDashboard = asyncComponent(() => import("./components/Dashboard"));
+const AsyncDashboard = asyncComponent(() => import('./components/Dashboard'));
 
 class App extends Component {
   constructor() {
@@ -27,22 +27,22 @@ class App extends Component {
       userCardData: null,
       newCardData: false,
       user: null,
-      currentPage: "dashboard",
+      currentPage: 'dashboard',
       currentCardId: null,
       currentUserId: null,
-      currentContent: "user-cards",
+      currentContent: 'user-cards',
       users: { 1: 0, 2: 0, 3: 0 },
       players: { 1: 0, 2: 0, 3: 0 }
     };
 
     // configure firebase
     const config = {
-      apiKey: "AIzaSyBeWljzW5mON5qnOPJ5_BEnuj79_kSG4mA",
-      authDomain: "grandmaster-71126.firebaseapp.com",
-      databaseURL: "https://grandmaster-71126.firebaseio.com",
-      projectId: "grandmaster-71126",
-      storageBucket: "",
-      messagingSenderId: "760258177615"
+      apiKey: 'AIzaSyBeWljzW5mON5qnOPJ5_BEnuj79_kSG4mA',
+      authDomain: 'grandmaster-71126.firebaseapp.com',
+      databaseURL: 'https://grandmaster-71126.firebaseio.com',
+      projectId: 'grandmaster-71126',
+      storageBucket: '',
+      messagingSenderId: '760258177615'
     };
 
     // initialize firebase
@@ -50,14 +50,14 @@ class App extends Component {
 
     // set firebase references
     this.rootRef = firebase.database().ref();
-    this.lobbyRef = this.rootRef.child("lobby");
+    this.lobbyRef = this.rootRef.child('lobby');
   }
 
   async componentDidMount() {
-    this.requireLogin();
+    // this.requireLogin();
     // gets all of the cards in the api to display in Card Collection
     try {
-      const res = await axios.get("/cards");
+      const res = await axios.get('/cards');
       console.log(res.data);
       this.setState({
         cardData: res.data,
@@ -68,10 +68,10 @@ class App extends Component {
     }
 
     // set up listeners for firebase to get current players/users in game rooms
-    this.lobbyRef.on("child_added", type => {
+    this.lobbyRef.on('child_added', type => {
       let updatedInfo = {};
 
-      this.lobbyRef.child(type.key).on("child_added", room => {
+      this.lobbyRef.child(type.key).on('child_added', room => {
         updatedInfo[room.key] = room.node_.value_;
       });
 
@@ -81,10 +81,10 @@ class App extends Component {
     });
 
     // set up listener for firebase for when players/users enter leave game rooms
-    this.lobbyRef.on("child_changed", type => {
+    this.lobbyRef.on('child_changed', type => {
       let updatedInfo = {};
 
-      this.lobbyRef.child(type.key).on("child_added", room => {
+      this.lobbyRef.child(type.key).on('child_added', room => {
         updatedInfo[room.key] = room.node_.value_;
       });
 
@@ -94,23 +94,23 @@ class App extends Component {
     });
   }
 
-  requireLogin = () => {
-    !this.state.auth && this.props.history.push("/");
-  };
+  // requireLogin = () => {
+  //   !this.state.auth && this.props.history.push("/");
+  // };
 
   // logs user in, gets users cards, redirects to their dashboard
   handleLoginSubmit = async (e, username, password) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/auth/login", { username, password });
+      const res = await axios.post('/auth/login', { username, password });
       const { auth, user } = res.data;
       this.setState({
         auth,
         user
       });
       this.state.auth
-        ? this.props.history.push("/user")
-        : this.props.history.push("/");
+        ? this.props.history.push('/user')
+        : this.props.history.push('/');
       if (this.state.user) {
         this.getUserCards();
       }
@@ -122,7 +122,7 @@ class App extends Component {
   // get user's cards from database
   getUserCards = async () => {
     try {
-      const res = await axios.get("/usercard");
+      const res = await axios.get('/usercard');
       this.setState({
         userCardData: res.data
       });
@@ -134,7 +134,7 @@ class App extends Component {
   // when user first logs in, gives them their initial 10 random cards
   getInitialUserCards = async () => {
     try {
-      const res = await axios.get("/user/new");
+      const res = await axios.get('/user/new');
       this.setState({
         userCardData: res.data
       });
@@ -144,7 +144,7 @@ class App extends Component {
     try {
       await this.state.userCardData.forEach(
         ({ id, name, type, attack, defense, image_url }) =>
-          axios.post("/usercard/new", {
+          axios.post('/usercard/new', {
             cardId: id,
             name,
             type,
@@ -160,13 +160,13 @@ class App extends Component {
   // gets a random card when users requests a new card, adds it to their cards
   getNewUserCard = async () => {
     if (this.state.user.currency >= 20) {
-      const res = await axios.get("/cards/new");
+      const res = await axios.get('/cards/new');
       this.setState({
         newCardData: res.data
       });
       const { newCardData } = this.state;
       try {
-        await axios.post("/usercard/new", {
+        await axios.post('/usercard/new', {
           cardId: newCardData[0].id,
           name: newCardData[0].name,
           type: newCardData[0].type,
@@ -180,10 +180,10 @@ class App extends Component {
       }
       let updatedCurrency = this.state.user.currency;
       updatedCurrency -= 20;
-      const {
-        user: { display_name, email, id, password_digest, username, wins }
-      } = this.state;
       try {
+        const {
+          user: { display_name, email, id, password_digest, username, wins }
+        } = this.state;
         this.setState({
           user: {
             currency: updatedCurrency,
@@ -195,7 +195,7 @@ class App extends Component {
             wins
           }
         });
-        const { user: { username, wins, currency } } = this.state;
+        const { user: { currency } } = this.state;
         const res = await axios.put(`/user/win`, {
           username,
           wins,
@@ -206,7 +206,7 @@ class App extends Component {
         console.log(error);
       }
     } else if (this.state.user.currency < 20) {
-      alert("Oops, not enough money. Win a few battles and come back!");
+      alert('Oops, not enough money. Win a few battles and come back!');
     }
   };
 
@@ -219,7 +219,7 @@ class App extends Component {
         });
         const { newCardData } = this.state;
         try {
-          await axios.post("/usercard/new", {
+          await axios.post('/usercard/new', {
             cardId: newCardData[0].id,
             name: newCardData[0].name,
             type: newCardData[0].type,
@@ -260,7 +260,7 @@ class App extends Component {
         console.log(err);
       }
     } else if (this.state.user.currency < num * 2) {
-      alert("Oops, not enough money. Win a few battles and come back!");
+      alert('Oops, not enough money. Win a few battles and come back!');
     }
   };
 
@@ -313,7 +313,7 @@ class App extends Component {
     try {
       if (confirm) {
         await axios.delete(`/user/${id}`);
-        this.props.history.push("/");
+        this.props.history.push('/');
         this.setState({
           user: null,
           auth: false
@@ -348,9 +348,9 @@ class App extends Component {
   // logs user out
   logOut = async () => {
     try {
-      const res = await axios.get("/auth/logout");
+      const res = await axios.get('/auth/logout');
       console.log(res);
-      this.props.history.push("/");
+      this.props.history.push('/');
       this.setState({
         auth: false
       });
@@ -409,8 +409,8 @@ class App extends Component {
       newUserData.email = email;
       this.setState({
         user: newUserData,
-        currentContent: "user-cards",
-        redirect: "/user",
+        currentContent: 'user-cards',
+        redirect: '/user',
         currentUserId: null
       });
     } catch (err) {
@@ -477,6 +477,8 @@ class App extends Component {
               userSelectedNameToEdit={this.userSelectedNameToEdit}
               currentUserId={this.state.currentUserId}
               deleteUser={this.deleteUser}
+              getInitial={this.getInitialUserCards}
+              getCards={this.getUserCards}
             />
           )}
         />
@@ -511,7 +513,7 @@ class App extends Component {
         <Route
           exact
           path="/register"
-          render={() => <Register getCards={this.getInitialUserCards} />}
+          render={() => <Register getInitial={this.getInitialUserCards} />}
         />
       </Switch>
     );
