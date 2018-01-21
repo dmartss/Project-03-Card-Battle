@@ -1,34 +1,33 @@
-import React from "react";
-import _ from "lodash";
-import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { submitRegister } from "../redux/actions";
-import registerFields from "./regFields";
-import registerRender from "./registerRender";
+import React from 'react';
+import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router-dom';
+import { submitRegister } from '../redux/actions';
+import { compose, lifecycle } from 'recompose';
+import RenderFields from './registerForm';
 
-const Register = ({ handleSubmit, submitRegister, history }) => {
+// const enhance =
+
+const Register = ({ loggedIn, handleSubmit, submitRegister, history }) => {
   const submitAndRedirect = (values, history) =>
     submitRegister(values, history);
-  const fieldsNow = _.map(registerFields, ({ type, placeholder, name }) => (
-    <Field
-      key={name}
-      component={registerRender}
-      placeholder={placeholder}
-      type={type}
-      name={name}
-    />
-  ));
   return (
     <div className="register">
       <form id="register" onSubmit={handleSubmit(submitAndRedirect)}>
-        {fieldsNow}
+        {RenderFields}
         <button type="submit">Submit</button>
+        {loggedIn && history.push('/user')}
       </form>
     </div>
   );
 };
 
-export default reduxForm({ form: "register" })(
-  connect(null, { submitRegister })(withRouter(Register))
-);
+export default compose(
+  reduxForm({ form: 'register' }),
+  lifecycle({
+    componentWillUnmount() {
+      this.props.getInitial();
+    }
+  }),
+  connect(({ auth: { loggedIn } }) => ({ loggedIn }), { submitRegister })
+)(withRouter(Register));

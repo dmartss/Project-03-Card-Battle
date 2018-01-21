@@ -1,30 +1,17 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import { DashboardNav } from "./Dashboard-Nav";
-import { DashboardContents } from "./Dashboard-Contents";
+import { DashboardNav } from './Dashboard-Nav';
+import { DashboardContents } from './Dashboard-Contents';
 
 class Dashboard extends Component {
   state = { leaderInfo: null };
 
   // state stored for leaderboard component
 
-  async componentWillMount() {
-    this.props.getInitial();
-    try {
-      const res = await axios.get("/usercard");
-      console.log(res);
-      this.setState({
-        userCardData: res.data
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   async componentDidMount() {
     try {
-      const res = await axios.get("/user/leaderboard");
+      const res = await axios.get('/user/leaderboard');
       console.log(res.data.data);
       this.setState({
         leaderInfo: res.data.data
