@@ -8,28 +8,32 @@
 .logo {
   position: absolute;
   z-index: -1;
-  left: -400px; 
-  top: -375px; 
+  left: -400px;
+  top: -375px;
   height: 1000px;
   width: 1000px;
-  opacity: .65;
+  opacity: 0.65;
   transform-origin: 500px 550px;
   filter: blur(3px) saturate(80%);
-  animation: App-logo-spin infinite 75s linear;  
+  animation: App-logo-spin infinite 75s linear;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-body{
-  background:#E8DDAF;
+body {
+  background: #e8ddaf;
   overflow: hidden;
 }
 
 h3 {
-font-size: 2.5em;
+  font-size: 2.5em;
 }
 
 p {
@@ -40,9 +44,9 @@ p {
 .dashboard-nav ul li {
   font-family: 'UnifrakturCook', cursive;
   font-size: 2em;
-  line-height: .8em;
+  line-height: 0.8em;
   letter-spacing: 0.07em;
-  margin-bottom:-10px;
+  margin-bottom: -10px;
   cursor: pointer;
   text-align: right;
 }
@@ -50,23 +54,23 @@ p {
 /* dashboard header*/
 .dashboard h1 {
   font-family: 'UnifrakturCook', cursive;
-  font-size:52px;
+  font-size: 52px;
   text-align: right;
-  margin-right:15px;
-  margin-bottom:20px;
+  margin-right: 15px;
+  margin-bottom: 20px;
 }
 
 /* dashboard height*/
 .dashboard {
-  display:flex;
+  display: flex;
   height: calc(100% - 30px);
   margin-bottom: 44px;
 }
 
 /* dashboard nav colors and width*/
 .dashboard-nav {
-  background-color: #9CA7D5;
-  color:#12183B;
+  background-color: #9ca7d5;
+  color: #12183b;
   width: 260px;
   min-width: 260px;
 }
@@ -101,10 +105,10 @@ ul {
 
 /* header nav */
 li {
-  padding:15px;
-  font-family:baskerville;
+  padding: 15px;
+  font-family: baskerville;
   letter-spacing: 0.05em;
-  font-size:20px;
+  font-size: 20px;
 }
 
 main {
@@ -113,7 +117,8 @@ main {
 }
 
 /* home page fonts with auth */
-.home, .register {
+.home,
+.register {
   display: flex;
   flex: 1;
   align-items: center;
@@ -122,9 +127,9 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   font-family: 'UnifrakturCook', cursive;
-  line-height: .3em;
+  line-height: 0.3em;
   font-size: 28px;
-  color: #12183B;
+  color: #12183b;
   background-image: url('/images/background.png');
   background-size: cover;
   background-position-x: center;
@@ -142,7 +147,7 @@ main {
 }
 
 /* login in components */
-.login input{
+.login input {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -153,13 +158,13 @@ main {
   display: flex;
 }
 
-.home li a{
-  color: #12183B;
-  margin-left:5px;
+.home li a {
+  color: #12183b;
+  margin-left: 5px;
 }
 
 /* register components */
-.register input{
+.register input {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -167,88 +172,89 @@ main {
 }
 
 /* all text password and email inputs */
-input[type='text'], input[type='password'], input[type='email'] {
-  width:350px;
-  padding:10px;
-  margin-bottom:20px;
-  font-size:16px;
+input[type='text'],
+input[type='password'],
+input[type='email'] {
+  width: 350px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
   font-family: 'Oxygen', sans-serif;
 }
 
 /* all buttons */
 button {
-  border: 1.5px solid #12183B;
-  padding:8px 25px;
+  border: 1.5px solid #12183b;
+  padding: 8px 25px;
   font-family: 'Oxygen', sans-serif;
-  font-size:16px;
-  background:#12183B;
-  color:#FBF6E0;
+  font-size: 16px;
+  background: #12183b;
+  color: #fbf6e0;
 }
 
 /* all buttons on hover */
-button:hover{
-   background: #485095;
+button:hover {
+  background: #485095;
   border: 1.5px solid #485095;
-  color:#FBF6E0;
+  color: #fbf6e0;
   cursor: pointer;
   animation: none;
 }
 
-
 button[type='button'] {
   border: 1.5px solid #dedede;
-  padding:8px 25px;
+  padding: 8px 25px;
   font-family: 'Oxygen', sans-serif;
-  font-size:16px;
-  background:white;
+  font-size: 16px;
+  background: white;
 }
 
-button[type='button']:hover{
-background: #bdbdbd;
- border: 1.5px solid #bdbdbd;
- color:#303E63;
- cursor: pointer;
+button[type='button']:hover {
+  background: #bdbdbd;
+  border: 1.5px solid #bdbdbd;
+  color: #303e63;
+  cursor: pointer;
 }
 
 /* footer */
 footer {
-  background:#12183B;
-  display:flex;
+  background: #12183b;
+  display: flex;
   flex-direction: column;
-  color:#FAF5E0;
+  color: #faf5e0;
   text-align: center;
-  padding:10px;
+  padding: 10px;
   font-family: 'UnifrakturCook', cursive;
-  font-size:14px;
+  font-size: 14px;
   letter-spacing: 0.2em;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   width: 100vw;
 }
 
 /* header */
 .header {
-  background:#12183B;
+  background: #12183b;
   padding: 2px 0px 2px 20px;
   display: flex;
   font-family: 'UnifrakturCook', cursive;
   justify-content: space-between;
   align-items: center;
   font-size: 2.6em;
-  color:#FAF5E0;
+  color: #faf5e0;
   letter-spacing: 0.1em;
 }
 
 /* header nav */
-header li, a{
-  font-family: 'UnifrakturCook', cursive; 
-  font-size:22px;
+header li,
+a {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 22px;
   display: -webkit-inline-flex;
   letter-spacing: 0.07em;
-  color:#FAF5E0;
+  color: #faf5e0;
   text-decoration: none;
 }
-
 
 header li {
   font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -256,22 +262,23 @@ header li {
   user-select: none;
 }
 
-
 /* card component */
 .card {
-  width:133px;
+  width: 133px;
   height: 200px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  float:left; 
-  padding:5px;
+  float: left;
+  padding: 5px;
   border-radius: 3%;
-  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 16px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 16px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* making card name and class on top of card */
-.card p, .card b {
+.card p,
+.card b {
   user-select: none;
   cursor: default;
 }
@@ -280,7 +287,7 @@ header li {
 .card-top {
   display: flex;
   justify-content: center;
-  padding: 0px 16px
+  padding: 0px 16px;
 }
 
 /* make delete and edit button on card not display */
@@ -288,16 +295,16 @@ header li {
 .card-wrapper .edit-button {
   /* padding: 5px 12px; */
   opacity: 0;
-  transition: .2s all;
-  display:none;
+  transition: 0.2s all;
+  display: none;
 }
 
 /* when user hovers over the card the edit and delete button show up */
 .UserCards .card-wrapper:hover .delete-button,
 .UserCards .card-wrapper:hover .edit-button {
   opacity: 1;
-  transition: .2s all;
-  display:unset;
+  transition: 0.2s all;
+  display: unset;
 }
 
 /* card name edit */
@@ -305,7 +312,7 @@ header li {
   width: 40px;
   background-color: inherit;
   border: none;
-  border-bottom: 1px solid black;  
+  border-bottom: 1px solid black;
   height: 10px;
   color: inherit;
   font-size: inherit;
@@ -320,49 +327,49 @@ header li {
 }
 
 /* card hover adds a border and makes card transparent*/
-.UserCards .card-wrapper{
-  border:7px solid transparent;
+.UserCards .card-wrapper {
+  border: 7px solid transparent;
   border-radius: 3%;
 }
 
-.card-collection .card-wrapper{
-  border:7px solid transparent;
+.card-collection .card-wrapper {
+  border: 7px solid transparent;
   border-radius: 3%;
 }
 
-.UserCards .card-wrapper:hover{
-  opacity:0.8;
-  border:7px solid black;
+.UserCards .card-wrapper:hover {
+  opacity: 0.8;
+  border: 7px solid black;
   border-radius: 3%;
 }
 
-.card-wrapper{
-  position:relative;
+.card-wrapper {
+  position: relative;
 }
 
 /* positioning of delete and edit button */
 .card-wrapper .delete-button,
-.card-wrapper .edit-button{
-  position:absolute;
-  top:45%;
+.card-wrapper .edit-button {
+  position: absolute;
+  top: 45%;
 }
 
 /* positioning of the edit button */
-.card-wrapper .edit-button{
-  top:30%;
-  left:40%;
-  padding:4px;
-  color:#E8DDAF;
-  background:black;
+.card-wrapper .edit-button {
+  top: 30%;
+  left: 40%;
+  padding: 4px;
+  color: #e8ddaf;
+  background: black;
 }
 
 /* positioning of the delete button */
-.card-wrapper .delete-button{
-  top:50%;
-  left:40%;
-  color:#E8DDAF;
-  padding:5px;
-  background:black;
+.card-wrapper .delete-button {
+  top: 50%;
+  left: 40%;
+  color: #e8ddaf;
+  padding: 5px;
+  background: black;
 }
 
 /* card name */
@@ -373,7 +380,7 @@ header li {
 }
 
 .card-name p {
-  font-size:14px;
+  font-size: 14px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
@@ -409,7 +416,7 @@ header li {
 }
 
 .card-numbers p {
-  width:50px;
+  width: 50px;
   font-size: 16px;
   margin: 0px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -422,59 +429,59 @@ header li {
 }
 
 /* making the pawn class background image */
-.card.Pawn{
+.card.Pawn {
   background-image: url('/images/pawn_card.png');
   background-size: 100% 100%;
-  color:#484F94;
+  color: #484f94;
 }
 
 /* making the castle class background image */
-.card.Castle{
+.card.Castle {
   background-image: url('/images/castle_card.png');
   background-size: 100% 100%;
-  color:#606D7C;
+  color: #606d7c;
 }
 
 /* making the knight class background image */
-.card.Knight{
+.card.Knight {
   background-image: url('/images/knight_card.png');
   background-size: 100% 100%;
-  color:#833B3C;
+  color: #833b3c;
 }
 
 /* making the bishop class background image */
-.card.Bishop{
+.card.Bishop {
   background-image: url('/images/bishop_card.png');
   background-size: 100% 100%;
-  color:#4C5E47;
+  color: #4c5e47;
 }
 
 /* making the queen class background image */
-.card.Queen{
+.card.Queen {
   background-image: url('/images/queen_card.png');
   background-size: 100% 100%;
-  color:#BD4E4E;
+  color: #bd4e4e;
 }
 
 /* making the king class background image */
-.card.King{
+.card.King {
   background-image: url('/images/king_card.png');
   background-size: 100% 100%;
-  color:#CA9A2C;
+  color: #ca9a2c;
 }
 
 /* when card is null you see back of card */
-.card.null{
+.card.null {
   background-image: url('/images/back_card.png');
   background-size: 100% 100%;
 }
 
-.card.undefined{
+.card.undefined {
   background-image: url('/images/back_card.png');
   background-size: 100% 100%;
 }
 
-.card-collection{
+.card-collection {
   background-image: 131px 175px;
 }
 
@@ -484,21 +491,21 @@ header li {
 
 /* card image after selected in battlefield */
 .battlefield_select {
-  width:200px;
-  height:300px;
-  margin-left:50px;
-  margin-right:50px;
-  position:relative;
+  width: 200px;
+  height: 300px;
+  margin-left: 50px;
+  margin-right: 50px;
+  position: relative;
 }
 
 /* card animation when card is selected from users cards */
 .user-selection .battlefield_select {
-  animation: fly-from-left .2s linear;
+  animation: fly-from-left 0.2s linear;
 }
 
 /* card animation when card is selected from oppos cards */
 .oppo-selection .battlefield_select {
-  animation: fly-from-right .2s linear;
+  animation: fly-from-right 0.2s linear;
 }
 
 /* card components when card is selected in battlefield */
@@ -519,46 +526,48 @@ header li {
   font-size: 28px;
 }
 
-@keyframes fly-from-left{
+@keyframes fly-from-left {
   0% {
-     transform: perspective(500px) translate3d(-100px, -300px, 400px) rotateX(-90deg); 
+    transform: perspective(500px) translate3d(-100px, -300px, 400px)
+      rotateX(-90deg);
   }
   90% {
-    transform: perspective(500px) translate3d(0px, 0px, -50px)
+    transform: perspective(500px) translate3d(0px, 0px, -50px);
   }
 }
 
-@keyframes fly-from-right{
+@keyframes fly-from-right {
   0% {
-     transform: perspective(500px) translate3d(100px, -300px, 400px) rotateX(-90deg); 
+    transform: perspective(500px) translate3d(100px, -300px, 400px)
+      rotateX(-90deg);
   }
   90% {
-    transform: perspective(500px) translate3d(0px, 0px, -50px)
+    transform: perspective(500px) translate3d(0px, 0px, -50px);
   }
 }
 
 /* battlefield information */
 .battle-log h2 {
   font-family: 'UnifrakturCook', cursive;
-  color:#12183B;
-  font-size:60px;
-  margin-top:5px;
+  color: #12183b;
+  font-size: 60px;
+  margin-top: 5px;
 }
 
 /* middle of battlefield */
 .mid-section {
-  width:60%;
+  width: 60%;
   margin: 0 auto;
-  height:100%;
-  display:flex;
-  flex-direction:column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .join-game-button {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 400;
-  font-size:60px;
-  transition: .25s all;
+  font-size: 60px;
+  transition: 0.25s all;
   width: 250px;
   align-self: center;
   border-radius: 5%;
@@ -568,7 +577,6 @@ header li {
 @keyframes pulse {
   0% {
     background-color: #485095;
-    
   }
   100% {
     border-color: #485095;
@@ -576,46 +584,45 @@ header li {
 }
 
 /* battlefield information width */
-.battle-log{
-  width:90%;
+.battle-log {
+  width: 90%;
   margin: 0 auto;
 }
 
 /* battlefield width */
 .battlefield {
-  width:100%;
+  width: 100%;
   margin: 0 auto;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 /* when the card is selected */
 .card-selected {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-
-.card-hands{
-  display:flex;
+.card-hands {
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 /* users cards width*/
 .users-hand {
- width:20%; 
-  align-items:center;
+  width: 20%;
+  align-items: center;
   flex-direction: column;
   overflow: hidden;
-  height: calc(100vh - 38px - 68px);  
+  height: calc(100vh - 38px - 68px);
 }
 
 /* users cards area */
 .users-hand div {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
@@ -626,7 +633,7 @@ header li {
   margin-bottom: -170px;
   width: 150px;
   height: 220px;
-  transition: .25s all;
+  transition: 0.25s all;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -651,7 +658,7 @@ header li {
 }
 
 .users-hand .card-numbers p {
-  transition: .25s all;
+  transition: 0.25s all;
   border-radius: 30px;
 }
 
@@ -663,26 +670,25 @@ header li {
 }
 
 .users-hand .card:hover .card-numbers p:nth-child(1) {
-  background-color: rgba(255,0,0,.45);
+  background-color: rgba(255, 0, 0, 0.45);
 }
 
 .users-hand .card:hover .card-numbers p:nth-child(2) {
-  background-color: rgba(0,200,200,.45);
+  background-color: rgba(0, 200, 200, 0.45);
 }
 
 /* oppo card width */
 .oppo-hand {
-  width:20%;
+  width: 20%;
   display: flex;
-  align-items:center;
+  align-items: center;
   flex-direction: column;
 }
 
 /* making oppo cards ontop of eachother */
 .oppo-hand .card {
-  margin-bottom:-175px;
+  margin-bottom: -175px;
 }
-
 
 .game-table {
   display: flex;
@@ -692,35 +698,35 @@ header li {
 
 .game-table h3 {
   font-family: 'UnifrakturCook', cursive;
-  color:#12183B;
-  font-size:35px;
-  margin-top:-1px;
-  margin-bottom:-2px;
+  color: #12183b;
+  font-size: 35px;
+  margin-top: -1px;
+  margin-bottom: -2px;
 }
 
 /* players hp */
 .hp {
-  width:85%;
-  margin:0 auto;
+  width: 85%;
+  margin: 0 auto;
   font-family: 'UnifrakturCook', cursive;
-  color:#631F1F;
-  font-size:30px;
+  color: #631f1f;
+  font-size: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top:-40px;
+  margin-top: -40px;
 }
 
 /* mesage box components */
 .message-box {
-  color:white;
+  color: white;
   font-family: 'Yanone Kaffeesatz', sans-serif;
-  background:rgba(0, 0, 0, 0.7);
-  border:3px solid black;
-  width:400px;
-  height:200px;
-  position:fixed;
-  bottom:8%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 3px solid black;
+  width: 400px;
+  height: 200px;
+  position: fixed;
+  bottom: 8%;
   right: 0;
   margin-right: 20px;
 }
@@ -742,21 +748,21 @@ header li {
 
 .message-box p {
   text-align: left;
-  padding:7px 15px 0px;
+  padding: 7px 15px 0px;
   font-weight: 300;
 }
 
 .message-box span {
   font-weight: 500;
-  color: #7B89FF;
+  color: #7b89ff;
 }
 
 /* adding a message */
 .message-input {
-  position:fixed; 
-  bottom: calc(8% + 3px); 
+  position: fixed;
+  bottom: calc(8% + 3px);
   right: 23px;
-  width:400px; 
+  width: 400px;
   height: 42px;
   align-self: flex-end;
 }
@@ -766,7 +772,7 @@ header li {
   flex-direction: row;
 }
 
-.message-input button[type='submit']{
+.message-input button[type='submit'] {
   height: 42px;
   padding: 0 5px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -784,34 +790,34 @@ header li {
 }
 
 .battlefield-buttons button {
-  padding:5px;
-  border-radius:15px;
+  padding: 5px;
+  border-radius: 15px;
   margin: 5px;
 }
 
 /* add a new card button */
-.new-card button{
-  border: 1.5px solid #12183B;
-  padding:8px 25px;
+.new-card button {
+  border: 1.5px solid #12183b;
+  padding: 8px 25px;
   font-family: 'Oxygen', sans-serif;
-  font-size:16px;
-  background:#12183B;
-  color:#FBF6E0;
-  margin-bottom:30px;
+  font-size: 16px;
+  background: #12183b;
+  color: #fbf6e0;
+  margin-bottom: 30px;
 }
 
-.new-card button:hover{
-   background: #485095;
+.new-card button:hover {
+  background: #485095;
   border: 1.5px solid #485095;
-  color:#FBF6E0;
+  color: #fbf6e0;
   cursor: pointer;
 }
 
 /* new card image width */
 .new-card {
-  width:100%;
-  height:100%;
-  display:flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -821,17 +827,17 @@ header li {
 .game-lobby h1 {
   font-size: 60px;
   font-family: 'UnifrakturCook', cursive;
-  color:#12183B;
+  color: #12183b;
   letter-spacing: 0.13em;
-  margin-top:-20px;
+  margin-top: -20px;
 }
 
 /* game lobby width */
 .game-lobby {
-  width:80%;
-  height:100%;
+  width: 80%;
+  height: 100%;
   margin: 0 auto;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -856,18 +862,18 @@ header li {
   position: relative;
   padding: 10px 0;
   box-sizing: border-box;
-  transition: .25s all;
+  transition: 0.25s all;
   border-radius: 2%;
 }
 
 /* game room box component */
 .game-room h2 {
-  font-size:92px;
+  font-size: 92px;
   padding: 0;
   margin: 0;
-  color:#485095;
-  position: absolute;  
-  top: 15px; 
+  color: #485095;
+  position: absolute;
+  top: 15px;
 }
 
 .game-room p {
@@ -880,52 +886,52 @@ header li {
 }
 
 .game-room:hover h2 {
-  color:#7A88FC;
+  color: #7a88fc;
 }
 
 .game-room:hover p {
-  color:#FBF6E0;
+  color: #fbf6e0;
 }
 
 /* leader-board width */
 .leader-board {
-  width:70%;
+  width: 70%;
   margin: 0 auto;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
 /* leaderboard information */
 .leader-board h3 {
   font-family: 'UnifrakturCook', cursive;
-  color:#12183B;
-  font-size:66px;
-  margin-top:40px;
-  margin-bottom:-5px;
-  padding-bottom:30px;
+  color: #12183b;
+  font-size: 66px;
+  margin-top: 40px;
+  margin-bottom: -5px;
+  padding-bottom: 30px;
 }
 
 .leader-single h4 {
   text-align: left;
-  margin-right:20px;
+  margin-right: 20px;
   font-family: 'UnifrakturCook', cursive;
   font-size: 24px;
-  color:#12183B;
+  color: #12183b;
 }
 
 .leader-single {
   display: flex;
-  margin-top:-10px;
+  margin-top: -10px;
   text-align: left;
 }
 
 .leader-single b,
 .leader-single span {
-  color:#12183B;
+  color: #12183b;
   font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-size:24px;
+  font-size: 24px;
   letter-spacing: 0.03em;
-  padding:5px;
+  padding: 5px;
   width: 50vw;
 }
 
@@ -935,24 +941,24 @@ header li {
 }
 
 .leader-start {
-  width:70vw;
-  height:100%;
+  width: 70vw;
+  height: 100%;
   justify-content: flex-start;
   align-items: center;
 }
 
 /* score component */
 .inside-leaderboard {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   height: 50px;
-  margin-bottom:12px;
+  margin-bottom: 12px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  position:relative;
+  position: relative;
   overflow: hidden;
   text-align: center;
 }
@@ -981,72 +987,72 @@ header li {
 
 /* user profile width */
 .user-profile {
-  width:80%;
-  margin:0 auto;
+  width: 80%;
+  margin: 0 auto;
   font-family: 'UnifrakturCook', cursive;
-  font-size:46px;
-  color:#12183B;
+  font-size: 46px;
+  color: #12183b;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top:-20px;
+  margin-top: -20px;
 }
 
 /* adding username and email */
 .user-profile span {
   font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-size:28px;
-  color:#484F94;
+  font-size: 28px;
+  color: #484f94;
   margin-bottom: -20px;
   letter-spacing: 0.05em;
 }
 
 /* profiles actual email and username */
 .user-profile h2 {
-  width:500px;
+  width: 500px;
   display: flex;
   flex-direction: column;
-  margin-bottom:30px;
+  margin-bottom: 30px;
   line-height: 1em;
 }
 
 /* edit and delete */
-.user-profile p{ 
+.user-profile p {
   font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-size:34px;
-  float:right;
-  margin-left:15px;
-  color:#12183B;
+  font-size: 34px;
+  float: right;
+  margin-left: 15px;
+  color: #12183b;
 }
 
 /* edit and delete buttons */
-.user-profile i{
-  font-size:28px;
-  color:#12183B;
+.user-profile i {
+  font-size: 28px;
+  color: #12183b;
 }
 
 /* hover edit and delete */
-.user-profile p:hover, i:hover {
-  color:#FDF6CF;
-  transition: .2s all;
+.user-profile p:hover,
+i:hover {
+  color: #fdf6cf;
+  transition: 0.2s all;
   cursor: pointer;
 }
 
 /* edit and delete containers */
 .user-buttons {
-  padding:20px;
-  margin-top:-20px;
+  padding: 20px;
+  margin-top: -20px;
 }
 
 /* edit username */
 .user-profile input[type='text'] {
   display: flex;
   flex-direction: column;
-  margin-top:40px;
+  margin-top: 40px;
   text-align: center;
 }
-
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -1066,5 +1072,5 @@ header li {
 
 .selected {
   background-color: #485095;
-  color: #CBD2EA;
+  color: #cbd2ea;
 }
