@@ -1,4 +1,4 @@
-import { REGISTER_SUBMIT } from "../actions";
+import { REGISTER_SUBMIT } from '../actions';
 
 const initialState = {
   auth: false,
@@ -7,10 +7,12 @@ const initialState = {
 export default function(state = initialState, { type, payload }) {
   switch (type) {
     case REGISTER_SUBMIT:
+      const { auth, user } = payload;
       return {
         ...state,
-        auth: payload.auth,
-        user: payload.user
+        auth: auth,
+        user: user,
+        loggedIn: true
       };
     default:
       return state;
