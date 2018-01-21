@@ -1,32 +1,31 @@
-const db = require("../db/config");
+const { query } = require("../db/config");
 
-const Card = {};
-//Find all cards, for the card collection page
-Card.findAll = () => db.query("SELECT * FROM cards");
-//Find random ten cards, for new users registration
-Card.findTen = () =>
-  db.query(`
+module.exports = Card = {
+  //Find all cards, for the card collection page
+  findAll: () => query("SELECT * FROM cards"),
+  //Find random ten cards, for new users registration
+  findTen: () =>
+    query(`
   SELECT * FROM cards
   ORDER BY RANDOM()
   LIMIT 10
-  `);
-//Find random one card, for 'get new card'
-Card.findOne = () =>
-  db.query(`
+  `),
+  //Find random one card, for 'get new card'
+  findOne: () =>
+    query(`
   SELECT * FROM cards
   ORDER BY RANDOM()
   LIMIT 1
-  `);
+  `),
 
-Card.findPremiumOne = num =>
-  db.query(
-    `
+  findPremiumOne: num =>
+    query(
+      `
   SELECT * FROM cards
   where id > $1
   ORDER BY RANDOM()
   LIMIT 1
   `,
-    [num]
-  );
-
-module.exports = Card;
+      [num]
+    )
+};
