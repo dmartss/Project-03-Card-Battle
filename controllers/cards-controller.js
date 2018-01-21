@@ -1,45 +1,44 @@
-const Card = require("../models/card");
+const { findAll, findTen, findOne, findPremiumOne } = require("../models/card");
 
-const cardsController = {};
-//find all cards, card collection page
-cardsController.index = async (req, res) => {
-  try {
-    const cards = await Card.findAll();
-    return res.json(cards);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-};
-//find ten cards, new user registration
-cardsController.findTen = async (req, res) => {
-  try {
-    const cards = await Card.findTen();
-    return res.json(cards);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-};
-//find new one card, get new card page
-cardsController.findOne = async (req, res) => {
-  try {
-    const cards = await Card.findOne();
-    return res.json(cards);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-};
+module.exports = cardsController = {
+  //find all cards, card collection page
+  index: async (req, res) => {
+    try {
+      const cards = await findAll();
+      return res.json(cards);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
+  //find ten cards, new user registration
+  findTen: async (req, res) => {
+    try {
+      const cards = await findTen();
+      return res.json(cards);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
+  //find new one card, get new card page
+  findOne: async (req, res) => {
+    try {
+      const cards = await findOne();
+      return res.json(cards);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
 
-cardsController.findPremiumOne = async (req, res) => {
-  try {
-    const cards = await Card.findPremiumOne(req.params.num);
-    return res.json(cards);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+  findPremiumOne: async (req, res) => {
+    try {
+      const cards = await findPremiumOne(req.params.num);
+      return res.json(cards);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
   }
 };
-
-module.exports = cardsController;
