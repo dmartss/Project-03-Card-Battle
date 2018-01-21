@@ -1,19 +1,26 @@
-const express = require('express');
-const userRoutes = express.Router();
-const usersController = require('../controllers/users-controller');
-const cardsController = require('../controllers/cards-controller');
-const authHelpers = require('../services/auth/auth-helpers');
-//show users cards
-userRoutes.get('/', authHelpers.loginRequired, usersController.index);
-//get random ten new cards for new users
-userRoutes.get('/new', authHelpers.loginRequired, cardsController.findTen);
-//show leaderboard
-userRoutes.get('/leaderboard', authHelpers.loginRequired, usersController.showLeaderboard);
-//update currency and wins after winning battle
-userRoutes.put('/win', authHelpers.loginRequired, usersController.updateCurrencyNWins);
-//update users info
-userRoutes.put('/:id', authHelpers.loginRequired, usersController.update);
-//delete user
-userRoutes.delete('/:id', authHelpers.loginRequired, usersController.delete);
+const express = require("express");
+const router = express.Router();
+const {
+  index,
+  showLeaderboard,
+  updateCurrencyNWins,
+  updateUser,
+  deleteUser
+} = require("../controllers/users-controller");
+const { findTen } = require("../controllers/cards-controller");
+const { loginRequired } = require("../services/auth/auth-helpers");
 
-module.exports = userRoutes;
+//show users cards
+router.get("/", loginRequired, index);
+//get random ten new cards for new users
+router.get("/new", loginRequired, findTen);
+//show leaderboard
+router.get("/leaderboard", loginRequired, showLeaderboard);
+//update currency and wins after winning battle
+router.put("/win", loginRequired, updateCurrencyNWins);
+//update users info
+router.put("/:id", loginRequired, updateUser);
+//delete user
+router.delete("/:id", loginRequired, deleteUser);
+
+module.exports = router;
