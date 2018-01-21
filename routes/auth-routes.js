@@ -1,40 +1,43 @@
-const express = require('express');
-const authRouter = express.Router();
-const passport = require('../services/auth/local');
-const authHelpers = require('../services/auth/auth-helpers');
-const usersController = require('../controllers/users-controller');
+const express = require("express");
+const passport = require("../services/auth/local");
+const authHelpers = require("../services/auth/auth-helpers");
+const { create } = require("../controllers/users-controller");
+const router = express.Router();
+
 //register route
-authRouter.post('/register',usersController.create);
+router.post("/register", create);
 //login route
-authRouter.post('/login',passport.authenticate('local',{
-    successRedirect: '/auth/success',
-    failureRedirect: '/auth/failure',
+router.post(
+  "/login",
+  passport.authenticate("local", {
     failureFlash: true,
-    })
+    successRedirect: "/auth/success",
+    failureRedirect: "/auth/failure"
+  })
 );
 //logout route
-authRouter.get('/logout', (req, res) => {
-    req.logout();
-    res.json({
-        message: 'logged out',
-        auth: false,
-    })
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.json({
+    auth: false,
+    message: "logged out"
+  });
 });
 //login success route
-authRouter.get('/success', (req, res) => {
-    res.json({
-        auth: true,
-        message: 'ok',
-        user: req.user,
-    });
+router.get("/success", (req, res) => {
+  res.json({
+    auth: true,
+    user: req.user,
+    message: "ok"
+  });
 });
 //login failed route: non-matching username/password
-authRouter.get('/failure', (req, res) => {
-    res.json({
-        auth: false,
-        message: 'Login failed',
-        user: null,
-    });
+router.get("/failure", (req, res) => {
+  res.json({
+    auth: false,
+    user: null,
+    message: "Login failed"
+  });
 });
 
-module.exports = authRouter;
+module.exports = router;
