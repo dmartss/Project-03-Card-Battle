@@ -1,12 +1,16 @@
-const express = require('express');
-const cardRoutes = express.Router();
-const authHelpers = require('../services/auth/auth-helpers');
+const express = require("express");
+const router = express.Router();
+const { loginRequired } = require("../services/auth/auth-helpers");
+const {
+  index,
+  findOne,
+  findPremiumOne
+} = require("../controllers/cards-controller");
 
-const cardsController = require('../controllers/cards-controller');
 //get all cards route
-cardRoutes.get('/', cardsController.index);
+router.get("/", index);
 //get one new card route
-cardRoutes.get('/new', authHelpers.loginRequired, cardsController.findOne);
-cardRoutes.get('/new/:num', authHelpers.loginRequired, cardsController.findPremiumOne);
+router.get("/new", loginRequired, findOne);
+router.get("/new/:num", loginRequired, findPremiumOne);
 
-module.exports = cardRoutes;
+module.exports = router;
