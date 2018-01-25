@@ -1,10 +1,3 @@
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
 .logo {
   position: absolute;
   z-index: -1;
@@ -25,19 +18,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-body {
-  background: #e8ddaf;
-  overflow: hidden;
-}
-
-h3 {
-  font-size: 2.5em;
-}
-
-p {
-  margin: 0;
 }
 
 /* dashboard navbar list*/
@@ -96,26 +76,6 @@ p {
   padding: 10px;
 }
 
-/* header nav */
-ul {
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-}
-
-/* header nav */
-li {
-  padding: 15px;
-  font-family: baskerville;
-  letter-spacing: 0.05em;
-  font-size: 20px;
-}
-
-main {
-  flex-grow: 1;
-  height: calc(100vh - 208px);
-}
-
 /* home page fonts with auth */
 .home,
 .register {
@@ -171,67 +131,6 @@ main {
   align-items: center;
 }
 
-/* all text password and email inputs */
-input[type='text'],
-input[type='password'],
-input[type='email'] {
-  width: 350px;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  font-family: 'Oxygen', sans-serif;
-}
-
-/* all buttons */
-button {
-  border: 1.5px solid #12183b;
-  padding: 8px 25px;
-  font-family: 'Oxygen', sans-serif;
-  font-size: 16px;
-  background: #12183b;
-  color: #fbf6e0;
-}
-
-/* all buttons on hover */
-button:hover {
-  background: #485095;
-  border: 1.5px solid #485095;
-  color: #fbf6e0;
-  cursor: pointer;
-  animation: none;
-}
-
-button[type='button'] {
-  border: 1.5px solid #dedede;
-  padding: 8px 25px;
-  font-family: 'Oxygen', sans-serif;
-  font-size: 16px;
-  background: white;
-}
-
-button[type='button']:hover {
-  background: #bdbdbd;
-  border: 1.5px solid #bdbdbd;
-  color: #303e63;
-  cursor: pointer;
-}
-
-/* footer */
-footer {
-  background: #12183b;
-  display: flex;
-  flex-direction: column;
-  color: #faf5e0;
-  text-align: center;
-  padding: 10px;
-  font-family: 'UnifrakturCook', cursive;
-  font-size: 14px;
-  letter-spacing: 0.2em;
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-}
-
 /* header */
 .header {
   background: #12183b;
@@ -243,23 +142,6 @@ footer {
   font-size: 2.6em;
   color: #faf5e0;
   letter-spacing: 0.1em;
-}
-
-/* header nav */
-header li,
-a {
-  font-family: 'UnifrakturCook', cursive;
-  font-size: 22px;
-  display: -webkit-inline-flex;
-  letter-spacing: 0.07em;
-  color: #faf5e0;
-  text-decoration: none;
-}
-
-header li {
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  cursor: default;
-  user-select: none;
 }
 
 /* card component */

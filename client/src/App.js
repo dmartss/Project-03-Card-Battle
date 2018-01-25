@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import * as firebase from 'firebase';
-
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import './App.css';
